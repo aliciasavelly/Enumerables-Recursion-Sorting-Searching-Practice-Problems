@@ -171,13 +171,13 @@ def rec_reverse(string)
 end
 
 p "--------recursive reverse-------"
-p reverse("hello") == "olleh"
-p reverse("house") == "esuoh" # => "esuoh"
-p reverse("dog") == "god" # => "god"
-p reverse("atom") == "mota" # => "mota"
-p reverse("q") == "q" # => "q"
-p reverse("id") == "di" # => "di"
-p reverse("") == "" # => ""
+p rec_reverse("hello") == "olleh"
+p rec_reverse("house") == "esuoh" # => "esuoh"
+p rec_reverse("dog") == "god" # => "god"
+p rec_reverse("atom") == "mota" # => "mota"
+p rec_reverse("q") == "q" # => "q"
+p rec_reverse("id") == "di" # => "di"
+p rec_reverse("") == "" # => ""
 
 # Write a recursive method that returns the first "num" factorial numbers.
 # Note that the 1st factorial number is 0!, which equals 1. The 2nd factorial
@@ -378,7 +378,6 @@ p matrix.my_transpose == [[0, 3, 6], [1, 4, 7], [2, 5, 8]]
 
   p "----------my_none---------"
   p [1, 2, 3].my_none? { |el| el == 3 } == false
-  p [1, 2, 3].my_none? { |el| el == 3 }
 
   def my_inject(accumulator = nil, &prc)
     prc ||= Proc.new { |accumulator, num| accumulator + num }
@@ -521,7 +520,7 @@ p matrix.my_transpose == [[0, 3, 6], [1, 4, 7], [2, 5, 8]]
   end
 
   p "---------bubble sort----------"
-  p [1, 2, 3, 22, 22, 11, 23, 7, 45].my_bubble_sort
+  p [1, 2, 3, 22, 22, 11, 23, 7, 45].my_bubble_sort == [1, 2, 3, 7, 11, 22, 22, 23, 45]
 
   def my_join(separator = "")
     result = ""
@@ -631,11 +630,11 @@ def base2to10(str_num)
 end
 
 puts "-------Binary to Base 10-------"
-puts base2to10("10") #== 2
-puts base2to10("01") #== 1
-puts base2to10("0111") #== 7
-puts base2to10("1100") #== 12
-puts base2to10("1010101") #== 85
+puts base2to10("10") == 2
+puts base2to10("01") == 1
+puts base2to10("0111") == 7
+puts base2to10("1100") == 12
+puts base2to10("1010101") == 85
 
 # Jumble sort takes a string and an alphabet. It returns a copy of the string
 # with the letters re-ordered according to their positions in the alphabet. If
