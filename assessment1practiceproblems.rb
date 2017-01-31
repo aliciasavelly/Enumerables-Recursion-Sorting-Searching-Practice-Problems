@@ -1,25 +1,24 @@
 require "byebug"
 
-# def bsearch(array, target)
-#   # return nil if array.length == 0
-#   middle = array.length / 2
-#
-#   case array[middle] <=> target
-#   when -1
-#     search = bsearch(array.dup.drop(middle + 1), target)
-#     return search if search.nil?
-#     return search + middle + 1
-#   when 0
-#     return middle
-#   when 1
-#     return bsearch(array.dup.take(middle), target)
-#   end
-# end
+def bsearch(array, target)
+  middle = array.length / 2
+
+  case array[middle] <=> target
+  when -1
+    search = bsearch(array.dup.drop(middle + 1), target)
+    return search if search.nil?
+    return search + middle + 1
+  when 0
+    return middle
+  when 1
+    return bsearch(array.dup.take(middle), target)
+  end
+end
 
 puts '----------binary search-----------'
-# puts bsearch([1, 3, 4, 5, 6], 6) == 4
-# puts bsearch([1, 3, 4, 5, 6], 3) == 1
-# puts bsearch([1, 3, 4, 5, 6], 4) == 2
+puts bsearch([1, 3, 4, 5, 6], 6) == 4
+puts bsearch([1, 3, 4, 5, 6], 3) == 1
+puts bsearch([1, 3, 4, 5, 6], 4) == 2
 
 # return the first n fibonacci numbers in an array
 def rec_fib(n)
@@ -28,6 +27,9 @@ def rec_fib(n)
   fibs = rec_fib(n - 1)
   fibs << (fibs[-1] + fibs[-2])
 end
+
+p "---------rec fib---------"
+p rec_fib(5) == [1, 1, 2, 3, 5]
 
 # return recursively all subsets of an array
 class Array
@@ -40,7 +42,7 @@ class Array
 end
 
 p "----------recursive subsets----------"
-# p [1, 2, 3].rec_subsets == [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+p [1, 2, 3].rec_subsets == [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
 # Two Sum
 #
@@ -73,7 +75,7 @@ class Array
 end
 
 p "----------two sum----------"
-# p [-1, 0, 2, -2, 1].two_sum == [[0, 4], [2, 3]]
+p [-1, 0, 2, -2, 1].two_sum == [[0, 4], [2, 3]]
 
 # primes(num) returns an array of the first "num" primes.
 # You may wish to use an is_prime? helper method.
@@ -98,13 +100,12 @@ def primes(num)
 end
 
 p "----------primes----------"
-# p is_prime?(257) == true
-# p is_prime?(2) == true
-# p is_prime?(4) == false
-# p is_prime?(13) == true
-# p is_prime?(40) == false
-# p primes(7) == [2, 3, 5, 7, 11, 13, 17]
-
+p is_prime?(257) == true
+p is_prime?(2) == true
+p is_prime?(4) == false
+p is_prime?(13) == true
+p is_prime?(40) == false
+p primes(7) == [2, 3, 5, 7, 11, 13, 17]
 
 ## uses recursion to calculate the sum from 1 to n (inclusive of n)
 def sum_to(n)
@@ -114,10 +115,10 @@ def sum_to(n)
 end
 
 p "----------sum to----------"
-# p sum_to(5) == 15  # => returns 15
-# p sum_to(1) == 1  # => returns 1
-# p sum_to(9) == 45  # => returns 45
-# p sum_to(-8) == nil  # => returns nil
+p sum_to(5) == 15  # => returns 15
+p sum_to(1) == 1  # => returns 1
+p sum_to(9) == 45  # => returns 45
+p sum_to(-8) == nil  # => returns nil
 
 ## takes in an array of Fixnums and returns the sum of those numbers
 
@@ -126,10 +127,10 @@ def add_numbers(nums_array)
 end
 
 p "----------add numbers----------"
-# p add_numbers([1,2,3,4]) == 10 # => returns 10
-# p add_numbers([3]) == 3 # => returns 3
-# p add_numbers([-80,34,7]) == -39 # => returns -39
-# p add_numbers([]) == nil # => returns nil
+p add_numbers([1,2,3,4]) == 10 # => returns 10
+p add_numbers([3]) == 3 # => returns 3
+p add_numbers([-80,34,7]) == -39 # => returns -39
+p add_numbers([]) == nil # => returns nil
 
 ## solve gamma function recursively
 ## gamma(n) (n - 1)!
@@ -141,10 +142,10 @@ def gamma_fnc(num)
 end
 
 p "----------gamma function----------"
-# p gamma_fnc(0) == nil # => returns nil
-# p gamma_fnc(1) == 1  # => returns 1
-# p gamma_fnc(4) == 6  # => returns 6
-# p gamma_fnc(8) == 5040  # => returns 5040
+p gamma_fnc(0) == nil # => returns nil
+p gamma_fnc(1) == 1  # => returns 1
+p gamma_fnc(4) == 6  # => returns 6
+p gamma_fnc(8) == 5040  # => returns 5040
 
 ## recursively find out whether the shop offers the favorite flavor
 
@@ -155,13 +156,13 @@ def ice_cream_shop(flavors, favorite)
 end
 
 p "--------ice cream shop---------"
-# p ice_cream_shop(["mint", "chocolate", "vanilla"], "vanilla") == true
-# p ice_cream_shop(["mint", "chocolate", "vanilla"], "sherbet") == false
-# p ice_cream_shop(['vanilla', 'strawberry'], 'blue moon') == false  # => returns false
-# p ice_cream_shop(['pistachio', 'green tea', 'chocolate', 'mint chip'], 'green tea') == true  # => returns true
-# p ice_cream_shop(['cookies n cream', 'blue moon', 'superman', 'honey lavender', 'sea salt caramel'], 'pistachio') == false  # => returns false
-# p ice_cream_shop(['moose tracks'], 'moose tracks') == true  # => returns true
-# p ice_cream_shop([], 'honey lavender') == false  # => returns false
+p ice_cream_shop(["mint", "chocolate", "vanilla"], "vanilla") == true
+p ice_cream_shop(["mint", "chocolate", "vanilla"], "sherbet") == false
+p ice_cream_shop(['vanilla', 'strawberry'], 'blue moon') == false  # => returns false
+p ice_cream_shop(['pistachio', 'green tea', 'chocolate', 'mint chip'], 'green tea') == true  # => returns true
+p ice_cream_shop(['cookies n cream', 'blue moon', 'superman', 'honey lavender', 'sea salt caramel'], 'pistachio') == false  # => returns false
+p ice_cream_shop(['moose tracks'], 'moose tracks') == true  # => returns true
+p ice_cream_shop([], 'honey lavender') == false  # => returns false
 
 ## takes in a string and returns it reversed recursively
 def rec_reverse(string)
@@ -170,13 +171,13 @@ def rec_reverse(string)
 end
 
 p "--------recursive reverse-------"
-# p reverse("hello") == "olleh"
-# p reverse("house") == "esuoh" # => "esuoh"
-# p reverse("dog") == "god" # => "god"
-# p reverse("atom") == "mota" # => "mota"
-# p reverse("q") == "q" # => "q"
-# p reverse("id") == "di" # => "di"
-# p reverse("") == "" # => ""
+p reverse("hello") == "olleh"
+p reverse("house") == "esuoh" # => "esuoh"
+p reverse("dog") == "god" # => "god"
+p reverse("atom") == "mota" # => "mota"
+p reverse("q") == "q" # => "q"
+p reverse("id") == "di" # => "di"
+p reverse("") == "" # => ""
 
 # Write a recursive method that returns the first "num" factorial numbers.
 # Note that the 1st factorial number is 0!, which equals 1. The 2nd factorial
@@ -189,8 +190,8 @@ def factorials_rec(num)
 end
 
 p "---------factorials recursion---------"
-# p factorials_rec(6) == [1, 1, 2, 6, 24, 120]
-# p factorials_rec(1) == [1]
+p factorials_rec(6) == [1, 1, 2, 6, 24, 120]
+p factorials_rec(1) == [1]
 
 #rec
 def permutations(array)
@@ -212,16 +213,11 @@ def permutations(array)
 end
 
 p "---------permutations-----------"
-# p permutations([1, 2, 3]) == [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+p permutations([1, 2, 3]) == [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 
 class Array
 
   def deep_dup
-    # done = true
-    # self.each do |el|
-    #   if el.is_a?(Array) done = false
-    # end
-    # return self if done
     out = []
 
     self.each do |el|
@@ -237,7 +233,7 @@ class Array
   end
 
 p "------------deep dup-------------"
-# p [1, 2, [3, 4, [5]]].deep_dup == [1, 2, [3, 4, [5]]]
+p [1, 2, [3, 4, [5]]].deep_dup == [1, 2, [3, 4, [5]]]
 
   # My Transpose
   #
@@ -288,7 +284,6 @@ p "------------deep dup-------------"
 
   def my_transpose
     transposed = []
-    # current = []
 
     i = 0
     until transposed.length == length
@@ -310,7 +305,7 @@ matrix = [
 ]
 
 p "----------my transpose---------"
-# p matrix.my_transpose == [[0, 3, 6], [1, 4, 7], [2, 5, 8]]
+p matrix.my_transpose == [[0, 3, 6], [1, 4, 7], [2, 5, 8]]
 
   # find median of an array, if it's an even number of els in array
   # add middle two elements together
@@ -330,8 +325,8 @@ p "----------my transpose---------"
   end
 
   p "--------median--------"
-  # p [1, 2, 3, 4].median == 2.5
-  # p [1, 2, 3, 4, 5].median == 3
+  p [1, 2, 3, 4].median == 2.5
+  p [1, 2, 3, 4, 5].median == 3
 
   # Write an Array#dups method that will return a hash containing the indices of all
   # duplicate elements. The keys are the duplicate elements; the values are
@@ -349,7 +344,7 @@ p "----------my transpose---------"
   end
 
   p "--------dups-------"
-  # p [1, 3, 4, 3, 0, 3, 0].dups == { 3 => [1, 3, 5], 0 => [4, 6] }
+  p [1, 3, 4, 3, 0, 3, 0].dups == { 3 => [1, 3, 5], 0 => [4, 6] }
 
   def my_quick_sort(&prc)
     return self if length < 2
@@ -361,6 +356,9 @@ p "----------my transpose---------"
 
     left.my_quick_sort(&prc) + [pivot] + right.my_quick_sort(&prc)
   end
+
+  p "---------quicksort--------"
+  p [34, 2, 3, 123, 34, 54, 27].my_quick_sort == [2, 3, 27, 34, 34, 54, 123]
 
   def my_each(&prc)
     prc ||= Proc.new { |el| el }
@@ -379,8 +377,8 @@ p "----------my transpose---------"
   end
 
   p "----------my_none---------"
-  # p [1, 2, 3].my_none? { |el| el == 3 } == false
-  # p [1, 2, 3].my_none? { |el| el == 3 }
+  p [1, 2, 3].my_none? { |el| el == 3 } == false
+  p [1, 2, 3].my_none? { |el| el == 3 }
 
   def my_inject(accumulator = nil, &prc)
     prc ||= Proc.new { |accumulator, num| accumulator + num }
@@ -396,6 +394,9 @@ p "----------my transpose---------"
     end
     accumulator
   end
+
+  p "--------inject--------"
+  p [1, 2, 3, 4, 5, 10].my_inject == 25
 
   def my_each_with_index(&prc)
     self.length.times do |i|
@@ -449,7 +450,8 @@ p "----------my transpose---------"
     flattened
   end
 
-  # p [1, 2, [3, [4, 5, [6, 7], 8], 9], 10].my_flatten == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  p "----------flatten---------"
+  p [1, 2, [3, [4, 5, [6, 7], 8], 9], 10].my_flatten == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   def my_bsearch(target)
     return nil if self.empty?
@@ -465,6 +467,10 @@ p "----------my transpose---------"
     end
 
   end
+
+  p "--------bsearch--------"
+  p [1, 2, 3, 4, 5, 6, 7].my_bsearch(6) == 5
+  p [1, 2, 3, 4, 5, 6, 7].my_bsearch(2) == 1
 
   def my_zip(*args)
     zipped = []
@@ -515,7 +521,7 @@ p "----------my transpose---------"
   end
 
   p "---------bubble sort----------"
-  # p [1, 2, 3, 22, 22, 11, 23, 7, 45].my_bubble_sort
+  p [1, 2, 3, 22, 22, 11, 23, 7, 45].my_bubble_sort
 
   def my_join(separator = "")
     result = ""
@@ -625,11 +631,11 @@ def base2to10(str_num)
 end
 
 puts "-------Binary to Base 10-------"
-# puts base2to10("10") #== 2
-# puts base2to10("01") #== 1
-# puts base2to10("0111") #== 7
-# puts base2to10("1100") #== 12
-# puts base2to10("1010101") #== 85
+puts base2to10("10") #== 2
+puts base2to10("01") #== 1
+puts base2to10("0111") #== 7
+puts base2to10("1100") #== 12
+puts base2to10("1010101") #== 85
 
 # Jumble sort takes a string and an alphabet. It returns a copy of the string
 # with the letters re-ordered according to their positions in the alphabet. If
@@ -641,7 +647,7 @@ puts "-------Binary to Base 10-------"
 
 def jumble_sort(str, alphabet = nil)
   return str.split("").sort.join if alphabet.nil?
-
+  #not done yet
 end
 
 def digital_root(num)
